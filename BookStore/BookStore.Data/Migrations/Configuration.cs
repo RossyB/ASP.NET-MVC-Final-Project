@@ -1,11 +1,12 @@
-using System;
-using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using BookStore.Data.Model;
 
 namespace BookStore.Data.Migrations
 {
-    public sealed class Configuration : DbMigrationsConfiguration<BookStore.Data.MsSqlDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<MsSqlDbContext>
     {
         public Configuration()
         {
@@ -13,20 +14,30 @@ namespace BookStore.Data.Migrations
             this.AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(BookStore.Data.MsSqlDbContext context)
+        protected override void Seed(MsSqlDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            this.SeedAdmin(context);
+        }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+        private void SeedAdmin(MsSqlDbContext context)
+        {
+            const string AdminUserName = "admin@bookstore.com";
+            const string AdminPassword = "123456";
+
+            if (!context.Roles.Any())
+            {
+                var roleStore = new RoleStore<IdentityRole>(context);
+                var roleManager = new RoleManager<IdentityRole>(roleStore);
+                var role = new IdentityRole { Name = "Admin" };
+                roleManager.Create(role);
+
+                var userStore = new UserStore<User>(context);
+                var userManager = new UserManager<User>(userStore);
+                var user = new User { UserName = AdminUserName, Email = AdminUserName, EmailConfirmed = true};
+                userManager.Create(user, AdminPassword);
+
+                userManager.AddToRole(user.Id, "Admin");
+            }
         }
     }
 }

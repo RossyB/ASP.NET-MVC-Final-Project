@@ -1,11 +1,8 @@
-﻿using BookStore.Data.Model.Contracts;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using BookStore.Data.Model.Contracts;
 
 namespace BookStore.Data.Model.Abstracts
 {
@@ -19,16 +16,18 @@ namespace BookStore.Data.Model.Abstracts
         [Key]
         public Guid Id { get; set; }
 
+        [Index]
+        public bool IsDeleted { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime? DeletedOn { get; set; }
+
         [DataType(DataType.DateTime)]
         public DateTime? CreatedOn { get; set; }
 
         [DataType(DataType.DateTime)]
         public DateTime? ModifiedOn { get; set; }
 
-        [Index]
-        public bool IsDeleted { get; set; }
 
-        [DataType(DataType.DateTime)]
-        public DateTime? DeletedOn { get; set; }
     }
 }
