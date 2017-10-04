@@ -27,7 +27,5 @@ namespace BookStore.Data.Model.Abstracts
 
         [DataType(DataType.DateTime)]
         public DateTime? ModifiedOn { get; set; }
-
-
     }
 }
