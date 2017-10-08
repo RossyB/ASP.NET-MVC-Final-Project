@@ -16,6 +16,9 @@ namespace BookStore.Data
         }
 
         public IDbSet<Book> Books { get; set; }
+        public IDbSet<Category> Categories { get; set; }
+        public IDbSet<Comment> Comments { get; set; }
+        public IDbSet<Rating> Ratings { get; set; }
 
         public override int SaveChanges()
         {
@@ -25,11 +28,14 @@ namespace BookStore.Data
 
         private void ApplyAuditInfoRules()
         {
-            foreach (var entry in 
-                this.ChangeTracker.Entries()
-                .Where(e => e.Entity is IAuditable && ((e.State == EntityState.Added) || (e.State == EntityState.Modified))))
+            foreach (var entry in
+               this.ChangeTracker.Entries()
+                   .Where(
+                       e =>
+                       e.Entity is IAuditable && ((e.State == EntityState.Added) || (e.State == EntityState.Modified))))
             {
                 var entity = (IAuditable)entry.Entity;
+
                 if (entry.State == EntityState.Added && entity.CreatedOn == default(DateTime))
                 {
                     entity.CreatedOn = DateTime.Now;

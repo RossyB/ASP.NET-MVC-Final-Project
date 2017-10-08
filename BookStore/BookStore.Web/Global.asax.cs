@@ -8,6 +8,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using BookStore.Data;
 using BookStore.Data.Migrations;
+using BookStore.Web.App_Start;
+using System.Reflection;
 
 namespace BookStore.Web
 {
@@ -21,6 +23,9 @@ namespace BookStore.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            var mapper = new AutoMapperConfig();
+            mapper.Execute(Assembly.GetExecutingAssembly());
         }
     }
 }
