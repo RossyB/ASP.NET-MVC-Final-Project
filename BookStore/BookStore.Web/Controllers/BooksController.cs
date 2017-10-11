@@ -36,6 +36,8 @@ namespace BookStore.Web.Controllers
         [HttpGet]
         public ActionResult AddBook()
         {
+
+
             var model = new BooksViewModel
             {
                 Categories = GetCategories()
@@ -48,6 +50,11 @@ namespace BookStore.Web.Controllers
         public ActionResult AddBook(BooksViewModel book)
         {
             var currentUserId = User.Identity.GetUserId();
+
+            if (currentUserId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
 
             var newBook = this.bookService.AddBook(
                 book.Title,

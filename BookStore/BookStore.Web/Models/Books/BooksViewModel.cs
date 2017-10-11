@@ -3,6 +3,7 @@ using BookStore.Data.Model;
 using BookStore.Web.Infrastructure;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -27,10 +28,12 @@ namespace BookStore.Web.Models.Books
 
         public Decimal Price { get; set; }
 
+        [DisplayName("Book Image Url")]
         public string BookImageUrl { get; set; }
 
         public Guid CategoryId { get; set; }
 
+        [DisplayName("Category Name")]
         public string CategoryName { get; set; }
 
         public IEnumerable<SelectListItem> Categories { get; set; }
