@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq;
 using BookStore.Data.Model;
+using BookStore.Services.Contracts;
 
 namespace BookStore.Services
 {
-    public interface IBookService
+    public interface IBookService : IService
     {
         IQueryable<Book> GetAll();
         IQueryable<Book> GetById(Guid bookId);

@@ -16,6 +16,7 @@ namespace BookStore.Web.App_Start
     using BookStore.Data;
     using BookStore.Data.Repositories.SaveContext;
     using BookStore.Services.Contracts;
+    using AutoMapper;
 
     public static class NinjectWebCommon 
     {
@@ -73,6 +74,7 @@ namespace BookStore.Web.App_Start
                 .SelectAllClasses()
                 .BindDefaultInterface();
             });
+
             kernel.Bind(x =>
             {
                 x.FromAssemblyContaining(typeof(IService))
@@ -83,6 +85,7 @@ namespace BookStore.Web.App_Start
             kernel.Bind(typeof(DbContext), typeof(MsSqlDbContext)).To<MsSqlDbContext>().InRequestScope();
             kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>));
             kernel.Bind<ISaveContext>().To<SaveContext>();
+            kernel.Bind<IMapper>().ToMethod(x => Mapper.Instance).InSingletonScope();
         }        
     }
 }

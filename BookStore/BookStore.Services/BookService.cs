@@ -13,13 +13,15 @@ namespace BookStore.Services
     {
         private readonly IEfRepository<Book> books;
         private readonly IEfRepository<User> users;
+        private readonly IEfRepository<Category> categories;
         private readonly ISaveContext context;
 
-        public BookService(IEfRepository<Book> books, IEfRepository<User> users, ISaveContext context)
+        public BookService(IEfRepository<Book> books, IEfRepository<User> users, IEfRepository<Category> categories, ISaveContext context)
         {
             this.books = books;
             this.users = users;
             this.context = context;
+            this.categories = categories;
         }
 
         public IQueryable<Book> GetAll()

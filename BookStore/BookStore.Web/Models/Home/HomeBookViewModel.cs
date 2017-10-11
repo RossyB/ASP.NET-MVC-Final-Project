@@ -9,7 +9,7 @@ using AutoMapper;
 
 namespace BookStore.Web.Models.Home
 {
-    public class BookViewModel : IMapFrom<Book>, IHaveCustomMappings
+    public class HomeBookViewModel : IMapFrom<Book>, IHaveCustomMappings
     {
         public string Title { get; set; }
 
@@ -22,7 +22,7 @@ namespace BookStore.Web.Models.Home
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
-            configuration.CreateMap<Book, BookViewModel>()
+            configuration.CreateMap<Book, HomeBookViewModel>()
                 .ForMember(x => x.OwnerEmail, cfg => cfg.MapFrom(y => y.Owner.Email));
         }
     }

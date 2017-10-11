@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,6 +6,7 @@ using System.Web.Mvc;
 using BookStore.Services;
 using BookStore.Web.Infrastructure;
 using BookStore.Web.Models.Home;
+using AutoMapper.QueryableExtensions;
 
 namespace BookStore.Web.Controllers
 {
@@ -23,10 +23,16 @@ namespace BookStore.Web.Controllers
         {
             var books = this.bookService
                 .GetAll()
-                .MapTo<BookViewModel>()
+                .ProjectTo<HomeBookViewModel>()
+                .Take(6)
                 .ToList();
 
             return View(books);
+        }
+
+        public ActionResult Books()
+        {
+            return View();
         }
 
         public ActionResult About()

@@ -54,8 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookService.cs" />
+    <Compile Include="CategoryService.cs" />
     <Compile Include="Contracts\IService.cs" />
     <Compile Include="IBookService.cs" />
+    <Compile Include="ICategoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

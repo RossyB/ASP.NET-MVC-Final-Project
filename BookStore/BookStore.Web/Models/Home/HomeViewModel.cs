@@ -7,6 +7,6 @@ namespace BookStore.Web.Models.Home
 {
     public class HomeViewModel
     {
-        public ICollection<BookViewModel> Books { get; set; }
+        public ICollection<HomeBookViewModel> Books { get; set; }
     }
 }

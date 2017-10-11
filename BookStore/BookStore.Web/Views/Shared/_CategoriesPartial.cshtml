@@ -1,0 +1,8 @@
+﻿@model BookStore.Web.Models.Books.CategoriesViewModel
+
+
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.DropDownListFor(m => m.CategoryId, Model.Categories, "Select Category");
+    </div>
+</div>

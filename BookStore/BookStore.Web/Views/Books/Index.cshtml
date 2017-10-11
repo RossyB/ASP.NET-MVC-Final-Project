@@ -1,0 +1,32 @@
+﻿@using BookStore.Web.Models.Books
+@model ICollection<BooksViewModel>
+@{
+    ViewBag.Title = "Books";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <h2>Books</h2>
+    </div>
+    <div class="col-md-4">
+        @Html.ActionLink("Add new book", "AddBook", "Books", new { @class = "navbar-brand" })
+    </div>
+    
+</div>
+
+<div class="row">
+    @foreach (var book in Model)
+    {
+        <div class="col-md-4">
+            <h2>@book.Title</h2>
+            <p>@book.Author</p>
+            <p>@book.Price</p>
+            <p>@book.CategoryName</p>
+            <p>@book.BookImageUrl</p>
+            <p>@Html.DisplayFor(x => book.CreatedOn) - @book.OwnerEmail</p>
+        </div>
+    }
+</div>
+
+
+
