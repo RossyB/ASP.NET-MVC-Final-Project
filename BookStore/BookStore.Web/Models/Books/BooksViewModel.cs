@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace BookStore.Web.Models.Books
 {
@@ -31,6 +32,8 @@ namespace BookStore.Web.Models.Books
         public Guid CategoryId { get; set; }
 
         public string CategoryName { get; set; }
+
+        public IEnumerable<SelectListItem> Categories { get; set; }
 
         public string OwnerEmail { get; set; }
 

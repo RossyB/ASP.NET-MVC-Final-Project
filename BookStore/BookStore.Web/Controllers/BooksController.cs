@@ -14,11 +14,12 @@ namespace BookStore.Web.Controllers
     public class BooksController : Controller
     {
         private readonly IBookService bookService;
+        private readonly ICategoryService categoryService;
 
-
-        public BooksController(IBookService bookService)
+        public BooksController(IBookService bookService, ICategoryService categoryService)
         {
             this.bookService = bookService;
+            this.categoryService = categoryService;
         }
 
         // GET: Books
@@ -31,11 +32,18 @@ namespace BookStore.Web.Controllers
 
             return View(books);
         }
+
         [HttpGet]
         public ActionResult AddBook()
         {
-            return View();
+            var model = new BooksViewModel
+            {
+                Categories = GetCategories()
+            };
+
+            return View(model);
         }
+
         [HttpPost]
         public ActionResult AddBook(BooksViewModel book)
         {
@@ -52,6 +60,21 @@ namespace BookStore.Web.Controllers
 
             return RedirectToAction("Index", "Books");
         }
+
+        private IEnumerable<SelectListItem> GetCategories()
+        {
+            var categories = categoryService
+                        .GetAll()
+                        .Select(x =>
+                                new SelectListItem
+                                {
+                                    Value = x.Id.ToString(),
+                                    Text = x.Name
+                                });
+
+            return new SelectList(categories, "Value", "Text");
+        }
+
 
     }
 }
