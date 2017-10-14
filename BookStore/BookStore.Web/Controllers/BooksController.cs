@@ -33,7 +33,18 @@ namespace BookStore.Web.Controllers
             return View(books);
         }
 
+        public ActionResult BookDetails(string Id)
+        {
+            var book = this.bookService
+                .GetById(Guid.Parse(Id))
+                .MapTo<BookDetailViewModel>()
+                .FirstOrDefault();
+
+            return View(book);
+        }
+
         [HttpGet]
+        [Authorize]
         public ActionResult AddBook()
         {
 
@@ -47,14 +58,10 @@ namespace BookStore.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult AddBook(BooksViewModel book)
         {
             var currentUserId = User.Identity.GetUserId();
-
-            if (currentUserId == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             var newBook = this.bookService.AddBook(
                 book.Title,

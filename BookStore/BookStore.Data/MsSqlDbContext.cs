@@ -18,7 +18,6 @@ namespace BookStore.Data
         public IDbSet<Book> Books { get; set; }
         public IDbSet<Category> Categories { get; set; }
         public IDbSet<Comment> Comments { get; set; }
-        public IDbSet<Rating> Ratings { get; set; }
 
         public override int SaveChanges()
         {

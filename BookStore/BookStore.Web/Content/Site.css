@@ -4,10 +4,11 @@
 }
 
 /* Set padding to keep content from hitting the edges */
-.body-content {
+/*.body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
+*/
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -21,4 +22,77 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.books-container {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.home-book-container {
+    margin: 3px;
+    margin: 3px;
+    margin-bottom: 40px;
+    padding: 5px;
+    border-bottom: 1px solid #b0bac2;
+    border-right: 1px solid #b0bac2;
+    box-shadow: 2px 2px 2px #b0bac2;
+    max-height: 450px;
+    position: relative;
+}
+
+    .home-book-container:hover {
+        box-shadow: 5px 5px 5px #b0bac2;
+    }
+
+.books-book-container {
+    margin: 3px;
+    margin-bottom: 40px;
+    padding: 5px;
+    border-bottom: 1px solid #b0bac2;
+    border-right: 1px solid #b0bac2;
+    box-shadow: 2px 2px 2px #b0bac2;
+    max-height: 550px;
+    position: relative;
+}
+
+    .books-book-container:hover {
+        box-shadow: 5px 5px 5px #b0bac2;
+    }
+
+.home-book-image{
+    max-width: 200px;
+}
+
+.books-book-image{
+    max-width: 230px;
+} 
+
+.book-title {
+    height: 40px;
+}
+
+.book-category {
+    padding: 3px;
+    background-color: #b0bac2;
+    margin: -5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.book-price {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    max-width: 80px;
+    border-radius: 50px;
+    background-color: #5cb85c;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 10px;
+}
+
+.book-detail-container{
+    padding-top: 50px;
 }

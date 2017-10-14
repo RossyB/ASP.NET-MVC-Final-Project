@@ -9,7 +9,8 @@ namespace BookStore.Data.Migrations
 {
     public sealed class Configuration : DbMigrationsConfiguration<MsSqlDbContext>
     {
-        const string AdminUserName = "admin@bookstore.com";
+        const string AdminEmail = "admin@bookstore.com";
+        const string AdminUserName = "Administrator";
         const string AdminPassword = "123456";
 
         public Configuration()
@@ -21,7 +22,7 @@ namespace BookStore.Data.Migrations
         protected override void Seed(MsSqlDbContext context)
         {
             this.SeedAdmin(context);
-            this.SeedSampleData(context);
+            this.SeedCategory(context);
         }
 
         private void SeedAdmin(MsSqlDbContext context)
@@ -35,30 +36,27 @@ namespace BookStore.Data.Migrations
 
                 var userStore = new UserStore<User>(context);
                 var userManager = new UserManager<User>(userStore);
-                var user = new User { UserName = AdminUserName, Email = AdminUserName, EmailConfirmed = true};
+                var user = new User { UserName = AdminUserName, Email = AdminEmail, EmailConfirmed = true};
                 userManager.Create(user, AdminPassword);
 
                 userManager.AddToRole(user.Id, "Admin");
             }
         }
-        private void SeedSampleData(MsSqlDbContext context)
+        private void SeedCategory(MsSqlDbContext context)
         {
-            if (!context.Books.Any())
+            if (!context.Categories.Any())
             {
-                for (int i = 0; i < 5; i++)
+                var categories = new[] { "Biography", "Fantasy", "Health & Cookery", "History", "Home and Garden", "Horror", "Humour", "Kids Books", "Modern Fiction", "Philosophy & Psychology", "Sci-fi", "Science", "Sport", "Thrillers", "Travel", "Classics" };
+
+                for (int i = 0; i < categories.Length; i++)
                 {
-                    var book = new Book()
+                    var category = new Category()
                     {
-                        Title = "Book " + i,
-                        Author = "Alabala" + i,
-                        Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lobortis nibh. Nullam bibendum, tortor quis porttitor fringilla, eros risus consequat orci, at scelerisque mauris dolor sit amet nulla. Vivamus turpis lorem, pellentesque eget enim ut, semper faucibus tortor. Aenean malesuada laoreet lorem.",
-                        Price = 8,
-                        Category = new Category { Name = "Category" + i },
-                        Owner = context.Users.First(x => x.Email == AdminUserName),
+                        Name =categories[i],
                         CreatedOn = DateTime.Now
                     };
 
-                    context.Books.Add(book);
+                    context.Categories.Add(category);
                 }
             }
         }

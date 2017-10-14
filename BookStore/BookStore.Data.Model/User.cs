@@ -25,6 +25,7 @@ namespace BookStore.Data.Model
         [MaxLength(25)]
         public string LastName { get; set; }
 
+        [MaxLength(300)]
         public string ImageUrl { get; set; }
 
         public virtual ICollection<Book> Books

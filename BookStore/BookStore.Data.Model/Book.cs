@@ -32,6 +32,8 @@ namespace BookStore.Data.Model
 
         public string BookImageUrl { get; set; }
 
+        public int Rathing { get; set; }
+
         public Guid CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
@@ -39,5 +41,11 @@ namespace BookStore.Data.Model
         public string OwnerId { get; set; }
 
         public virtual User Owner { get; set; }
+
+        public virtual ICollection<Comment> Comments
+        {
+            get { return this.comments; }
+            set { this.comments = value; }
+        }
     }
 }

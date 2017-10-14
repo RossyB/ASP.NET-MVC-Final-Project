@@ -1,0 +1,52 @@
+﻿@using BookStore.Web.Models.Books
+
+@model BookStore.Web.Models.Books.BookDetailViewModel
+
+@{
+    ViewBag.Title = "BookDetails";
+}
+
+@Html.Partial("_HeadImagePartial")
+
+<div class="container">
+
+    <div class="row book-detail-container">
+
+        <div class="col-md-4">
+            <img src="@(Model.BookImageUrl)" />
+        </div>
+        <div class="col-md-8">
+            <h2>@Model.Title</h2>
+            <h3>@Model.Author</h3>
+            <p>@Model.Description</p>
+            <p>@Model.Price</p>
+
+            <p>@Model.Rathing</p>
+            <p>@Model.CategoryName</p>
+            <p>@Model.OwnerUserName</p>
+            <p>@Model.CreatedOn</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Comments</h4>
+                @if (Model.Comments.Count != 0)
+                {
+                    foreach (var comment in Model.Comments)
+                    {
+                            <p>@comment.Content</p>
+                            <p>Written by <span></span>@comment.User.UserName</p>
+                    }
+                }
+                else
+                {
+                    <p>No comments</p>
+                }
+            </div>
+
+
+            
+        </div>
+    </div>
+
+</div>

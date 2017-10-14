@@ -7,6 +7,7 @@ using BookStore.Services;
 using BookStore.Web.Infrastructure;
 using BookStore.Web.Models.Home;
 using AutoMapper.QueryableExtensions;
+using BookStore.Web.Models.Books;
 
 namespace BookStore.Web.Controllers
 {
@@ -32,7 +33,12 @@ namespace BookStore.Web.Controllers
 
         public ActionResult Books()
         {
-            return View();
+            var books = this.bookService
+                .GetAll()
+                .ProjectTo<BooksViewModel>()
+                .ToList();
+
+            return View(books);
         }
 
         public ActionResult About()
@@ -46,6 +52,11 @@ namespace BookStore.Web.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult Error()
+        {
             return View();
         }
     }
