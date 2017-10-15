@@ -1,0 +1,20 @@
+﻿@model BookStore.Web.Models.Comments.BookCommentViewModel
+@{
+    ViewBag.Title = "_BookCommentPartial";
+}
+
+@using (Ajax.BeginForm("BookComment", "Comments",
+                            new AjaxOptions
+                            {
+                                HttpMethod = "POST",
+                                InsertionMode = InsertionMode.InsertBefore,
+                                UpdateTargetId = "comments"
+                            }))
+{
+    <div class="row"></div>
+    @Html.HiddenFor(m => m.BookId)
+    @Html.EditorFor(m => m.Content, new {@class = "form-control" })
+    <br />
+    <input type="submit" class="btn btn-success"/>
+    <br />
+}

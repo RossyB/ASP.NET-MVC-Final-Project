@@ -7,6 +7,7 @@ using System.Web;
 using AutoMapper;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using BookStore.Web.Models.Comments;
 
 namespace BookStore.Web.Models.Books
 {
@@ -36,7 +37,7 @@ namespace BookStore.Web.Models.Books
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime CreatedOn { get; set; }
 
-        public ICollection<Comment> Comments { get; set; }
+        public ICollection<CommentViewModel> Comments { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {

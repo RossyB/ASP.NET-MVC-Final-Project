@@ -24,6 +24,11 @@ textarea {
     max-width: 280px;
 }
 
+.navbar-inverse .navbar-nav > li > a {
+    color: #5cb85c;
+}
+
+
 .books-container {
     margin-top: 50px;
     margin-bottom: 30px;

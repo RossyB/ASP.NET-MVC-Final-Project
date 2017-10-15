@@ -12,7 +12,7 @@ namespace BookStore.Data.Model
     public class Comment : DataModel
     {
         [Required]
-        [MaxLength(250)]
+        [StringLength(500, MinimumLength = 10)]
         public string Content { get; set; }
 
         public string UserId { get; set; }

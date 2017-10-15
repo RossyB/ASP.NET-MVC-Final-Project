@@ -1,4 +1,6 @@
-﻿@using BookStore.Web.Models.Books
+﻿@using BookStore.Web.Models.Comments
+@using BookStore.Web.Models.Books
+
 
 @model BookStore.Web.Models.Books.BookDetailViewModel
 
@@ -30,23 +32,33 @@
         <div class="row">
             <div class="col-md-12">
                 <h4>Comments</h4>
-                @if (Model.Comments.Count != 0)
+
+                @if (User.Identity.IsAuthenticated)
                 {
-                    foreach (var comment in Model.Comments)
+                    @Html.Partial("_BookCommentPartial", new BookCommentViewModel(Model.Id))
+                }
+
+                <div id="comments">
+                    @if (Model.Comments.Count != 0)
                     {
-                            <p>@comment.Content</p>
-                            <p>Written by <span></span>@comment.User.UserName</p>
+                        foreach (var comment in Model.Comments)
+                        {
+                            @Html.Partial("_CommentPartial", comment)
+                        }
                     }
-                }
-                else
-                {
-                    <p>No comments</p>
-                }
+                    else
+                    {
+                        <p>No comments</p>
+                    }
+                </div>
             </div>
 
-
-            
         </div>
     </div>
 
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryajax")
+    @Scripts.Render("~/bundles/jqueryval")
+}

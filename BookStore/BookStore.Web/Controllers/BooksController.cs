@@ -1,6 +1,7 @@
 ﻿using BookStore.Services;
 using BookStore.Web.Infrastructure;
 using BookStore.Web.Models.Books;
+using BookStore.Web.Models.Comments;
 using BookStore.Web.Models.Home;
 using Microsoft.AspNet.Identity;
 using System;
@@ -15,11 +16,13 @@ namespace BookStore.Web.Controllers
     {
         private readonly IBookService bookService;
         private readonly ICategoryService categoryService;
+        private readonly ICommentService commentService;
 
-        public BooksController(IBookService bookService, ICategoryService categoryService)
+        public BooksController(IBookService bookService, ICategoryService categoryService, ICommentService commentService)
         {
             this.bookService = bookService;
             this.categoryService = categoryService;
+            this.commentService = commentService;
         }
 
         // GET: Books
@@ -39,6 +42,11 @@ namespace BookStore.Web.Controllers
                 .GetById(Guid.Parse(Id))
                 .MapTo<BookDetailViewModel>()
                 .FirstOrDefault();
+            
+            book.Comments = commentService.GetAll()
+                .Where(c => c.BookId == book.Id)
+                .MapTo<CommentViewModel>()
+                .ToList();
 
             return View(book);
         }
@@ -88,7 +96,5 @@ namespace BookStore.Web.Controllers
 
             return new SelectList(categories, "Value", "Text");
         }
-
-
     }
 }
