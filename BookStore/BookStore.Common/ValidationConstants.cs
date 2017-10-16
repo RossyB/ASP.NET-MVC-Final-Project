@@ -14,8 +14,16 @@
         public const string BookPriceMaxValue = "999999999.99";
         public const int BookDescriptionMinLength = 50;
         public const int BookDescriptionMaxLength = 1000;
+        public const string BookRatingMinValue = "0";
+        public const string BookRatingMaxValue = "10";
+        public const int CommentContentMinLength = 10;
+        public const int CommentContentMaxLength = 500;
+
+
         public const string MinLengthFieldErrorMessage = "Field {0} must be min {1} symbols";
         public const string MaxLengthFieldErrorMessage = "Field {0} must be max {1} symbols";
         public const string PriceOutOfRangeErrorMessage = "{0} Invalid price - 0,01, 999 999 999.99.";
+        public const string RatingOutOfRangeErrorMessage = "{0} Invalid range, must be between - 0 and 10.";
+
     }
 }

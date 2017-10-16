@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BookStore.Data.Model.Abstracts;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using BookStore.Data.Model.Abstracts;
+using BookStore.Common;
 
 namespace BookStore.Data.Model
 {
     public class Comment : DataModel
     {
         [Required]
-        [StringLength(500, MinimumLength = 10)]
+        [MinLength(ValidationConstants.CommentContentMinLength, ErrorMessage = ValidationConstants.MinLengthFieldErrorMessage)]
+        [MaxLength(ValidationConstants.CommentContentMaxLength, ErrorMessage = ValidationConstants.MaxLengthFieldErrorMessage)]
         public string Content { get; set; }
 
         public string UserId { get; set; }

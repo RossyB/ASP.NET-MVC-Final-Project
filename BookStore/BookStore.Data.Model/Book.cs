@@ -4,8 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using BookStore.Common;
 using BookStore.Data.Model.Abstracts;
 
-
-
 namespace BookStore.Data.Model
 {
     public class Book : DataModel
@@ -42,6 +40,9 @@ namespace BookStore.Data.Model
         [MaxLength(ValidationConstants.BookImageUrlMaxLength, ErrorMessage = ValidationConstants.MaxLengthFieldErrorMessage)]
         public string BookImageUrl { get; set; }
 
+        [Range(typeof(int),
+            ValidationConstants.BookRatingMinValue,
+            ValidationConstants.BookRatingMaxValue, ErrorMessage = ValidationConstants.RatingOutOfRangeErrorMessage)]
         public int Rathing { get; set; }
 
         public Guid CategoryId { get; set; }

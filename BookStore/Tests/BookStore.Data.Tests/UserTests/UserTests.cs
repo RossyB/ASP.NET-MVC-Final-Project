@@ -57,8 +57,6 @@ namespace BookStore.Data.Tests.UserTests
         public void Users_ShouldGetAndSetFirstNameCorrectly()
         {
             // Arrange & Act
-            var testId = Guid.NewGuid();
-            var book = new Book() { Id = testId };
             var user = new User();
             var firstName = "Pesho";
             user.FirstName = firstName;
@@ -71,8 +69,6 @@ namespace BookStore.Data.Tests.UserTests
         public void Users_ShouldGetAndSetLastNameCorrectly()
         {
             // Arrange & Act
-            var testId = Guid.NewGuid();
-            var book = new Book() { Id = testId };
             var user = new User();
             var lastName = "Peshev";
             user.LastName = lastName;
@@ -85,8 +81,6 @@ namespace BookStore.Data.Tests.UserTests
         public void Users_ShouldGetAndSetImageUrlCorrectly()
         {
             // Arrange & Act
-            var testId = Guid.NewGuid();
-            var book = new Book() { Id = testId };
             var user = new User();
             var imageUrl = "http://abv.bg";
             user.ImageUrl = imageUrl;
