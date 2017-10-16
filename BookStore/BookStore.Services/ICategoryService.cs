@@ -8,7 +8,7 @@ namespace BookStore.Services
     public interface ICategoryService : IService
     {
         IQueryable<Category> GetAll();
-        IQueryable<Category> GetById(Guid categoryId);
+        IQueryable<Category> GetById(Guid? categoryId);
         Category GetCategoryByName(string name);
     }
 }

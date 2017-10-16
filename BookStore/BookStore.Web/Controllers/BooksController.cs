@@ -31,6 +31,7 @@ namespace BookStore.Web.Controllers
             var books = this.bookService
                 .GetAll()
                 .MapTo<BooksViewModel>()
+                .OrderBy(b => b.Title)
                 .ToList();
 
             return View(books);
@@ -55,8 +56,6 @@ namespace BookStore.Web.Controllers
         [Authorize]
         public ActionResult AddBook()
         {
-
-
             var model = new BooksViewModel
             {
                 Categories = GetCategories()

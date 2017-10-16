@@ -25,7 +25,8 @@ namespace BookStore.Web.Controllers
             var books = this.bookService
                 .GetAll()
                 .ProjectTo<HomeBookViewModel>()
-                .Take(6)
+                .OrderByDescending(b => b.CreatedOn)
+                .Take(8)
                 .ToList();
 
             return View(books);

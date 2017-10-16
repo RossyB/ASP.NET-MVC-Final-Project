@@ -23,7 +23,7 @@ namespace BookStore.Services
                 .OrderBy(c => c.Name);
         }
 
-        public IQueryable<Category> GetById(Guid categoryId)
+        public IQueryable<Category> GetById(Guid? categoryId)
         {
             return this.categories
                 .All

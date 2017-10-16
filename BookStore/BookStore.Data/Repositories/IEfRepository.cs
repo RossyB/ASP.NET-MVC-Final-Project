@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using BookStore.Data.Model.Contracts;
+using System;
 
 namespace BookStore.Data.Repositories
 {
@@ -7,7 +8,8 @@ namespace BookStore.Data.Repositories
     {
         IQueryable<T> All { get; }
         IQueryable<T> AllAndDeleted { get; }
-
+        T GetById(string id);
+        T GetById(Guid? id);
         void Add(T entity);
         void Delete(T entity);
         void Update(T entity);
