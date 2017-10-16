@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BookStore.Data.Model.Abstracts;
 using System.ComponentModel.DataAnnotations;
+using BookStore.Common;
+using BookStore.Data.Model.Abstracts;
+
+
 
 namespace BookStore.Data.Model
 {
@@ -18,18 +18,28 @@ namespace BookStore.Data.Model
         }
 
         [Required]
-        [MaxLength(50)]
+        [MinLength(ValidationConstants.BookTitleMinLength, ErrorMessage = ValidationConstants.MinLengthFieldErrorMessage)]
+        [MaxLength(ValidationConstants.BookTitleMaxLength, ErrorMessage = ValidationConstants.MaxLengthFieldErrorMessage)]
         public string Title { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MinLength(ValidationConstants.BookAuthorMinLength, ErrorMessage = ValidationConstants.MinLengthFieldErrorMessage)]
+        [MaxLength(ValidationConstants.BookAuthorMaxLength, ErrorMessage = ValidationConstants.MaxLengthFieldErrorMessage)]
         public string Author { get; set; }
 
-        [MaxLength(1000)]
+        [MinLength(ValidationConstants.BookDescriptionMinLength, ErrorMessage = ValidationConstants.MinLengthFieldErrorMessage)]
+        [MaxLength(ValidationConstants.BookDescriptionMaxLength, ErrorMessage = ValidationConstants.MaxLengthFieldErrorMessage)]
         public string Description { get; set; }
 
+        [Required]
+        [Range(typeof(decimal),
+            ValidationConstants.BookPriceMinValue,
+            ValidationConstants.BookPriceMaxValue, ErrorMessage = ValidationConstants.PriceOutOfRangeErrorMessage)]
+        [DataType(DataType.Currency)]
         public Decimal Price { get; set; }
 
+        [MinLength(ValidationConstants.BookImageUrlMinLength, ErrorMessage = ValidationConstants.MinLengthFieldErrorMessage)]
+        [MaxLength(ValidationConstants.BookImageUrlMaxLength, ErrorMessage = ValidationConstants.MaxLengthFieldErrorMessage)]
         public string BookImageUrl { get; set; }
 
         public int Rathing { get; set; }

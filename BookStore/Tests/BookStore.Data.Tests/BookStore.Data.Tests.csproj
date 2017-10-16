@@ -59,10 +59,19 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookTests\BookPrice_Should.cs" />
+    <Compile Include="BookTests\BookImageUrl_Should.cs" />
+    <Compile Include="BookTests\BookConstructor_Should.cs" />
+    <Compile Include="BookTests\BookDescription_Should.cs" />
+    <Compile Include="BookTests\BookAuthor_Should.cs" />
+    <Compile Include="BookTests\BookTitle_Should.cs" />
+    <Compile Include="BookTests\BookId_Should.cs" />
     <Compile Include="CategoryTests\CategoryConstructor_Should.cs" />
     <Compile Include="CategoryTests\CategoryId_Should.cs" />
     <Compile Include="CategoryTests\CategoryName_Should.cs" />
+    <Compile Include="CategoryTests\CategoryProductsCollection_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserTests\UserTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

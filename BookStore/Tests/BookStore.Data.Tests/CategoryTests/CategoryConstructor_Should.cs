@@ -18,14 +18,14 @@ namespace BookStore.Data.Tests.CategoryTests
         }
 
         [Test]
-        public void InitializeProductCollectionCorrectly()
+        public void InitializeCategoryCollectionCorrectly()
         {
             // Arrange & Act
             var category = new Category();
-            var products = category.Books;
+            var books = category.Books;
 
             // Assert
-            Assert.That(products, Is.Not.Null.And.InstanceOf<HashSet<Book>>());
+            Assert.That(books, Is.Not.Null.And.InstanceOf<HashSet<Book>>());
         }
     }
 }
