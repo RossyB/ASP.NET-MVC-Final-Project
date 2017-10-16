@@ -18,15 +18,14 @@
             <img src="@(Model.BookImageUrl)" />
         </div>
         <div class="col-md-8">
-            <h2>@Model.Title</h2>
-            <h3>@Model.Author</h3>
-            <p>@Model.Description</p>
-            <p>@Model.Price</p>
+            <h2>@Html.DisplayFor(model => model.Title)</h2>
+            <h3>@Html.DisplayFor(model => model.Author)</h3>
+            <p>@Html.DisplayFor(model => model.Description)</p>
+            <p>@Html.DisplayFor(model => model.Price)</p>
 
-            <p>@Model.Rathing</p>
-            <p>@Model.CategoryName</p>
-            <p>@Model.OwnerUserName</p>
-            <p>@Model.CreatedOn</p>
+            <p>@Html.DisplayFor(model => model.Rathing)</p>
+            <p>@Html.DisplayFor(model => model.CategoryName)</p>
+            <p>added on @Html.DisplayFor(model => model.CreatedOn) <em>by @Model.OwnerUserName</em></p>
         </div>
         
         <div class="row">

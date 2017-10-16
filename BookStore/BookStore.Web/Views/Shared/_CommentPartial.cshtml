@@ -1,4 +1,5 @@
 ﻿@model BookStore.Web.Models.Comments.CommentViewModel
 
-<p>@Model.Content</p>
-<p>Written by <span>@Model.AuthorName</span></p>
+<hr />
+<p>@Html.DisplayFor(model => model.Content)</p>
+<p><em>Written by </em><strong>@Html.DisplayFor(model => model.AuthorName)</strong></p>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using BookStore.Data.Model.Abstracts;
+using BookStore.Common;
 
 namespace BookStore.Data.Model
 {
@@ -17,8 +18,10 @@ namespace BookStore.Data.Model
 
         [Required]
         [Index(IsUnique = true)]
-        [MaxLength(50)]
+        [MinLength(ValidationConstants.CategoryMinLength, ErrorMessage = ValidationConstants.MinLengthFieldErrorMessage)]
+        [MaxLength(ValidationConstants.CategoryMaxLength, ErrorMessage = ValidationConstants.MaxLengthFieldErrorMessage)]
         public string Name { get; set; }
+
 
         public virtual ICollection<Book> Books
         {

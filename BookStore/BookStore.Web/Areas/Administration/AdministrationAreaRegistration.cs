@@ -17,7 +17,8 @@ namespace BookStore.Web.Areas.Administration
             context.MapRoute(
                 "Administration_default",
                 "Administration/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+                new[] { "BookStore.Web.Areas.Administration.Controllers" }
             );
         }
     }

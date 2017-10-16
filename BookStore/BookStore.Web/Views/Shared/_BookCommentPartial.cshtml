@@ -4,13 +4,14 @@
 }
 
 @using (Ajax.BeginForm("BookComment", "Comments",
-                            new AjaxOptions
-                            {
-                                HttpMethod = "POST",
-                                InsertionMode = InsertionMode.InsertBefore,
-                                UpdateTargetId = "comments"
-                            }))
+                                        new AjaxOptions
+                                        {
+                                            HttpMethod = "POST",
+                                            InsertionMode = InsertionMode.InsertBefore,
+                                            UpdateTargetId = "comments"
+                                        }))
 {
+    @Html.AntiForgeryToken()
     <div class="row"></div>
     @Html.HiddenFor(m => m.BookId)
     @Html.EditorFor(m => m.Content, new {@class = "form-control" })

@@ -23,6 +23,8 @@ namespace BookStore.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult BookComment(BookCommentViewModel comment)
         {
             var currentUserId = User.Identity.GetUserId();

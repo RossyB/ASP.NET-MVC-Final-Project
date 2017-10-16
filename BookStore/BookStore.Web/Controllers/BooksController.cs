@@ -67,6 +67,7 @@ namespace BookStore.Web.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult AddBook(BooksViewModel book)
         {
             var currentUserId = User.Identity.GetUserId();
