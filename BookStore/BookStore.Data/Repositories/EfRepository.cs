@@ -34,14 +34,9 @@ namespace BookStore.Data.Repositories
         }
 
 
-        public T GetById(string id)
+        public T GetById(Guid id)
         {
             return this.context.Set<T>().Find(id);
-        }
-
-        public T GetById(Guid? id)
-        {
-            return this.context .Set<T>().Find(id);
         }
 
         public void Add(T entity)

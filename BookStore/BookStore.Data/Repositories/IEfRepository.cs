@@ -8,8 +8,7 @@ namespace BookStore.Data.Repositories
     {
         IQueryable<T> All { get; }
         IQueryable<T> AllAndDeleted { get; }
-        T GetById(string id);
-        T GetById(Guid? id);
+        T GetById(Guid id);
         void Add(T entity);
         void Delete(T entity);
         void Update(T entity);

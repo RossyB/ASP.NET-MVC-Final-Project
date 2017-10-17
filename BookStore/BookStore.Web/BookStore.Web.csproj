@@ -266,6 +266,8 @@
     <Content Include="Areas\Administration\Views\Categories\Details.cshtml" />
     <Content Include="Areas\Administration\Views\Categories\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Categories\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\rossy-bookstore - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\rossy-bookstore - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\book-store-logo.png" />
     <Content Include="Images\Bookstore.jpg" />

@@ -4,7 +4,7 @@ using Moq;
 using BookStore.Data.Repositories;
 using BookStore.Data.Model;
 
-namespace BookStore.Services.Tests.CategoryServiseTests
+namespace BookStore.Services.Tests.CategoryServiceTests
 {
     [TestFixture]
     public class Constructor_Should

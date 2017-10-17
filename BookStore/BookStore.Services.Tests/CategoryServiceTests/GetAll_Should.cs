@@ -6,7 +6,7 @@ using BookStore.Data.Repositories;
 using BookStore.Data.Model;
 using System.Collections.Generic;
 
-namespace BookStore.Services.Tests.CategoryServiseTests
+namespace BookStore.Services.Tests.CategoryServiceTests
 {
     [TestFixture]
     public class GetAll_Should

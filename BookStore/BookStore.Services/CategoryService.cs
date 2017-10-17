@@ -1,5 +1,6 @@
 ﻿using BookStore.Data.Model;
 using BookStore.Data.Repositories;
+using Bytes2you.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace BookStore.Services
 
         public CategoryService(IEfRepository<Category> categories)
         {
+            Guard.WhenArgument(categories, "categories").IsNull().Throw();
+
             this.categories = categories;
         }
 

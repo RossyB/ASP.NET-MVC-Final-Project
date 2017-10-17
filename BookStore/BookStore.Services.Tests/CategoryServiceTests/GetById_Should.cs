@@ -6,7 +6,7 @@ using BookStore.Data.Repositories;
 using BookStore.Data.Model;
 using System.Collections.Generic;
 
-namespace BookStore.Services.Tests.CategoryServiseTests
+namespace BookStore.Services.Tests.CategoryServiceTests
 {
     [TestFixture]
     public class GetById_Should
@@ -16,15 +16,15 @@ namespace BookStore.Services.Tests.CategoryServiseTests
         {
             // Arrange
             var repositoryMock = new Mock<IEfRepository<Category>>();
-            Guid categoryId = Guid.NewGuid();
-
-            repositoryMock.Setup(m => m.GetById(categoryId)).Returns(new Category() { Id = categoryId });
+            var categoryId = Guid.NewGuid();
+            
+            repositoryMock.Setup(m => m.GetById(categoryId)).Returns(new Category() { Id = categoryId});
 
             CategoryService categoryService = new CategoryService(repositoryMock.Object);
             
 
             // Act
-            Category category = categoryService.GetById(categoryId).FirstOrDefault();
+            var category = categoryService.GetById(categoryId);
 
             // Assert
             Assert.IsNotNull(category);
