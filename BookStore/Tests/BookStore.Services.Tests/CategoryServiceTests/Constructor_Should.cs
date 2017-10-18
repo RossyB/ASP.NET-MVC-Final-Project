@@ -26,7 +26,7 @@ namespace BookStore.Services.Tests.CategoryServiceTests
         public void ThrowArgumentNullException_WhenCategorySetRepositoryIsNull()
         {
             // Arrange
-            
+
 
             // Act & Assert
             Assert.Throws<ArgumentNullException>(
