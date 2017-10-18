@@ -1,6 +1,7 @@
 ﻿using BookStore.Data.Model;
 using BookStore.Data.Repositories;
 using BookStore.Data.Repositories.SaveContext;
+using Bytes2you.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,10 @@ namespace BookStore.Services
 
         public CommentService(IEfRepository<Comment> comments, IEfRepository<User> users, ISaveContext context)
         {
+            Guard.WhenArgument(comments, "comments").IsNull().Throw();
+            Guard.WhenArgument(users, "users").IsNull().Throw();
+            Guard.WhenArgument(context, "context").IsNull().Throw();
+
             this.comments = comments;
             this.users = users;
             this.context = context;
