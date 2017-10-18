@@ -36,5 +36,29 @@ namespace BookStore.Services.Tests.BookServiceTests
             Assert.Throws<ArgumentNullException>(
                 () => new BookService(null, userRepositoryMock.Object, contextMock.Object));
         }
+
+        [Test]
+        public void ThrowArgumentNullException_WhenUserRepositoryIsNull()
+        {
+            // Arrange
+            var bookRepositoryMock = new Mock<IEfRepository<Book>>();
+            var contextMock = new Mock<ISaveContext>();
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(
+                () => new BookService(bookRepositoryMock.Object, null, contextMock.Object));
+        }
+
+        [Test]
+        public void ThrowArgumentNullException_WhenContextIsNull()
+        {
+            // Arrange
+            var bookRepositoryMock = new Mock<IEfRepository<Book>>();
+            var userRepositoryMock = new Mock<IEfRepository<User>>();
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(
+                () => new BookService(bookRepositoryMock.Object, userRepositoryMock.Object, null));
+        }
     }
 }

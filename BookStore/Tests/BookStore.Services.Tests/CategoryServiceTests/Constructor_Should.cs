@@ -21,5 +21,16 @@ namespace BookStore.Services.Tests.CategoryServiceTests
             // Assert
             Assert.That(categoryService, Is.InstanceOf<CategoryService>());
         }
+
+        [Test]
+        public void ThrowArgumentNullException_WhenCategorySetRepositoryIsNull()
+        {
+            // Arrange
+            
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(
+                () => new CategoryService(null));
+        }
     }
 }
