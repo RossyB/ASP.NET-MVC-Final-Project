@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using AutoMapper;
+using BookStore.Common;
 
 namespace BookStore.Web.Models.Comments
 {
@@ -13,7 +14,6 @@ namespace BookStore.Web.Models.Comments
     {
         public BookCommentViewModel()
         {
-
         }
 
         public BookCommentViewModel(Guid bookId)
@@ -24,6 +24,8 @@ namespace BookStore.Web.Models.Comments
         public Guid BookId { get; set; }
 
         [Required]
+        [MinLength(ValidationConstants.CommentContentMinLength, ErrorMessage = ValidationConstants.MinLengthFieldErrorMessage)]
+        [MaxLength(ValidationConstants.CommentContentMaxLength, ErrorMessage = ValidationConstants.MaxLengthFieldErrorMessage)]
         [UIHint("MultiLineText")]
         public string Content { get; set; }
 

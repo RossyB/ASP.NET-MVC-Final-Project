@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using BookStore.Common;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BookStore.Web.Models
@@ -69,15 +70,23 @@ namespace BookStore.Web.Models
         public string Email { get; set; }
 
         [Required]
+        [MinLength(ValidationConstants.UserNameMinLength, ErrorMessage = ValidationConstants.MinLengthFieldErrorMessage)]
+        [MaxLength(ValidationConstants.UserNameMaxLength, ErrorMessage = ValidationConstants.MaxLengthFieldErrorMessage)]
         [Display(Name = "User Name")]
         public string UserName { get; set; }
 
+        [MinLength(ValidationConstants.UserStringMinLength, ErrorMessage = ValidationConstants.MinLengthFieldErrorMessage)]
+        [MaxLength(ValidationConstants.UserStringMaxLength, ErrorMessage = ValidationConstants.MaxLengthFieldErrorMessage)]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
+        [MinLength(ValidationConstants.UserStringMinLength, ErrorMessage = ValidationConstants.MinLengthFieldErrorMessage)]
+        [MaxLength(ValidationConstants.UserStringMaxLength, ErrorMessage = ValidationConstants.MaxLengthFieldErrorMessage)]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [MinLength(ValidationConstants.UserImageUrlMinLength, ErrorMessage = ValidationConstants.MinLengthFieldErrorMessage)]
+        [MaxLength(ValidationConstants.UserImageUrlMaxLength, ErrorMessage = ValidationConstants.MaxLengthFieldErrorMessage)]
         [Display(Name = "Image Url")]
         public string ImageUrl { get; set; }
 

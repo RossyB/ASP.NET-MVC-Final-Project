@@ -15,7 +15,12 @@
     <div class="row"></div>
     @Html.HiddenFor(m => m.BookId)
     @Html.EditorFor(m => m.Content, new {@class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Content, "", new { @class = "text-danger" })
     <br />
     <input type="submit" class="btn btn-success"/>
     <br />
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }

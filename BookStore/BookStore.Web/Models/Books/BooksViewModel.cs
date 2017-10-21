@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BookStore.Common;
 using BookStore.Data.Model;
 using BookStore.Web.Infrastructure;
 using System;
@@ -20,14 +21,29 @@ namespace BookStore.Web.Models.Books
 
         public Guid Id { get; set; }
 
+        [Required]
+        [MinLength(ValidationConstants.BookTitleMinLength, ErrorMessage = ValidationConstants.MinLengthFieldErrorMessage)]
+        [MaxLength(ValidationConstants.BookTitleMaxLength, ErrorMessage = ValidationConstants.MaxLengthFieldErrorMessage)]
         public string Title { get; set; }
 
+        [Required]
+        [MinLength(ValidationConstants.BookAuthorMinLength, ErrorMessage = ValidationConstants.MinLengthFieldErrorMessage)]
+        [MaxLength(ValidationConstants.BookAuthorMaxLength, ErrorMessage = ValidationConstants.MaxLengthFieldErrorMessage)]
         public string Author { get; set; }
 
+        [MinLength(ValidationConstants.BookDescriptionMinLength, ErrorMessage = ValidationConstants.MinLengthFieldErrorMessage)]
+        [MaxLength(ValidationConstants.BookDescriptionMaxLength, ErrorMessage = ValidationConstants.MaxLengthFieldErrorMessage)]
         public string Description { get; set; }
 
+        [Required]
+        [Range(typeof(decimal),
+            ValidationConstants.BookPriceMinValue,
+            ValidationConstants.BookPriceMaxValue, ErrorMessage = ValidationConstants.PriceOutOfRangeErrorMessage)]
+        [DataType(DataType.Currency)]
         public Decimal Price { get; set; }
 
+        [MinLength(ValidationConstants.BookImageUrlMinLength, ErrorMessage = ValidationConstants.MinLengthFieldErrorMessage)]
+        [MaxLength(ValidationConstants.BookImageUrlMaxLength, ErrorMessage = ValidationConstants.MaxLengthFieldErrorMessage)]
         [DisplayName("Book Image Url")]
         public string BookImageUrl { get; set; }
 

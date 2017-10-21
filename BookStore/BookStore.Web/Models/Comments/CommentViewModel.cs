@@ -2,6 +2,8 @@
 using AutoMapper;
 using BookStore.Data.Model;
 using BookStore.Web.Infrastructure;
+using System.ComponentModel.DataAnnotations;
+using BookStore.Common;
 
 namespace BookStore.Web.Models.Comments
 {
@@ -11,6 +13,8 @@ namespace BookStore.Web.Models.Comments
 
         public string AuthorName { get; set; }
 
+        [MinLength(ValidationConstants.CommentContentMinLength, ErrorMessage = ValidationConstants.MinLengthFieldErrorMessage)]
+        [MaxLength(ValidationConstants.CommentContentMaxLength, ErrorMessage = ValidationConstants.MaxLengthFieldErrorMessage)]
         public string Content { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
