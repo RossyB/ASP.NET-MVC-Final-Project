@@ -33,7 +33,7 @@ namespace BookStore.Services
                 .OrderBy(c => c.Title);
         }
 
-        public IQueryable<Book> GetById(Guid bookId)
+        public IQueryable<Book> GetById(Guid? bookId)
         {
             return this.books
                 .All()
@@ -41,7 +41,7 @@ namespace BookStore.Services
 
         }
 
-        public Guid AddBook(string title, string author, string description, decimal price, string bookImageUrl, Guid categoryId, string userId)
+        public Guid AddBook(string title, string author, string description, decimal? price, string bookImageUrl, Guid? categoryId, string userId)
         {
             var currentUser = this.users
                 .All()
@@ -57,10 +57,10 @@ namespace BookStore.Services
                 Title = title,
                 Author = author,
                 Description = description,
-                Price = price,
+                Price = (decimal)price,
                 BookImageUrl = bookImageUrl,
                 CreatedOn = DateTime.UtcNow,
-                CategoryId = categoryId,
+                CategoryId = (Guid)categoryId,
                 OwnerId = userId,
             };
 

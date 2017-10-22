@@ -13,10 +13,10 @@ namespace BookStore.Data.Tests.ContextSaveChanges.Tests
         {
             // Arrange
             var validDbContext = new Mock<MsSqlDbContext>();
-            var carSystemDbContextSaveChanges = new SaveContext(validDbContext.Object);
+            var dbContextSaveChanges = new SaveContext(validDbContext.Object);
 
             // Act
-            carSystemDbContextSaveChanges.Commit();
+            dbContextSaveChanges.Commit();
 
             // Assert
             validDbContext.Verify(u => u.SaveChanges(), Times.Once);

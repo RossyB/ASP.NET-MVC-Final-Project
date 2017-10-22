@@ -75,6 +75,7 @@
     <Compile Include="BookServiceTests\GetById_Should.cs" />
     <Compile Include="BookServiceTests\Constructor_Should.cs" />
     <Compile Include="BookServiceTests\GetAll_Should.cs" />
+    <Compile Include="BookServiceTests\AddBook_Sould.cs" />
     <Compile Include="CategoryServiceTests\Constructor_Should.cs" />
     <Compile Include="CategoryServiceTests\GetAll_Should.cs" />
     <Compile Include="CategoryServiceTests\GetById_Should.cs" />
