@@ -4,8 +4,9 @@ using BookStore.Data.Repositories;
 using BookStore.Data.Model;
 using Moq;
 using System.Data.Entity;
+using BookStore.Data;
 
-namespace BookStore.Data.Tests.EfRepoBookStoreData.Tests
+namespace BookStore.DataTests.EfRepoBookStoreData.Tests
 {
     [TestFixture]
     public class Constructor_Should
