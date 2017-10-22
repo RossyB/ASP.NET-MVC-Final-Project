@@ -76,6 +76,8 @@
   <ItemGroup>
     <Compile Include="BookStoreDbContext.Tests\Constructor_Should.cs" />
     <Compile Include="BookStoreDbContext.Tests\Create_Should.cs" />
+    <Compile Include="ContextSaveChanges.Tests\Constructor_Should.cs" />
+    <Compile Include="ContextSaveChanges.Tests\Commit_Should.cs" />
     <Compile Include="EfRepoBookStoreData.Tests\Constructor_Should.cs" />
     <Compile Include="EfRepoBookStoreData.Tests\All_Should.cs" />
     <Compile Include="EfRepoBookStoreData.Tests\GetById_Should.cs" />
