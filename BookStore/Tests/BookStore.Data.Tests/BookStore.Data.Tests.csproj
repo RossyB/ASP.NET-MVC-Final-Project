@@ -76,11 +76,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BookStore.Data.Model\BookStore.Data.Model.csproj">
+    <ProjectReference Include="..\..\BookStore.Data.Model\BookStore.Data.Model.csproj">
       <Project>{A25DB66B-6A03-4364-B6E6-7A95BDF26C6E}</Project>
       <Name>BookStore.Data.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BookStore.Data\BookStore.Data.csproj">
+    <ProjectReference Include="..\..\BookStore.Data\BookStore.Data.csproj">
       <Project>{fed59dfa-e453-45ac-bb08-11f97a5815c1}</Project>
       <Name>BookStore.Data</Name>
     </ProjectReference>

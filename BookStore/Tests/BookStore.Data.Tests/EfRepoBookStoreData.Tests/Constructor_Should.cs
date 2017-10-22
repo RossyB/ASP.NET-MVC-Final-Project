@@ -6,7 +6,7 @@ using Moq;
 using System.Data.Entity;
 using BookStore.Data;
 
-namespace BookStore.DataTests.EfRepoBookStoreData.Tests
+namespace BookStore.Data.Tests.EfRepoBookStoreData.Tests
 {
     [TestFixture]
     public class Constructor_Should
