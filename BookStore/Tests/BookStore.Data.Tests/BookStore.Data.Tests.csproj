@@ -75,6 +75,8 @@
     <Compile Include="CategoryTests\CategoryId_Should.cs" />
     <Compile Include="CategoryTests\CategoryName_Should.cs" />
     <Compile Include="CategoryTests\CategoryProductsCollection_Should.cs" />
+    <Compile Include="CommentTests\CommentUser_Should.cs" />
+    <Compile Include="CommentTests\CommentBook_Should.cs" />
     <Compile Include="CommentTests\CommentContent_Should.cs" />
     <Compile Include="CommentTests\CommentId_Should.cs" />
     <Compile Include="CommentTests\CommentConstructor_Should.cs" />

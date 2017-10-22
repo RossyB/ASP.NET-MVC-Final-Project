@@ -1,7 +1,5 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using BookStore.Data.Model;
-using System.Collections.Generic;
 
 namespace BookStore.Data.Tests.CategoryTests
 {
