@@ -7,7 +7,7 @@ using NUnit.Framework;
 using BookStore.Data.Model;
 using BookStore.Common;
 
-namespace BookStore.Data.Tests.CategoryTests
+namespace BookStore.Data.Models.Tests.CategoryTests
 {
     public class CommentContent_Should
     {

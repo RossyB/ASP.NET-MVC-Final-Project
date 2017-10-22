@@ -3,7 +3,7 @@ using NUnit.Framework;
 using BookStore.Data.Model;
 using System.Collections.Generic;
 
-namespace BookStore.Data.Tests.CategoryTests
+namespace BookStore.Data.Models.Tests.CategoryTests
 {
     public class CategoryConstructor_Should
     {

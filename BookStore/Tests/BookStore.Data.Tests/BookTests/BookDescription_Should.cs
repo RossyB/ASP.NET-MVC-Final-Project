@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using BookStore.Common;
 using System.Linq;
 
-namespace BookStore.Data.Tests.BookTests
+namespace BookStore.Data.Models.Tests.BookTests
 {
     [TestFixture]
     public class BookDescription_Should

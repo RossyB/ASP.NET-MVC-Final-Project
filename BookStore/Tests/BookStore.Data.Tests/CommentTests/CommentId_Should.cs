@@ -4,7 +4,7 @@ using BookStore.Data.Model;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace BookStore.Data.Tests.CategoryTests
+namespace BookStore.Data.Models.Tests.CategoryTests
 {
     public class CommentId_Should
     {

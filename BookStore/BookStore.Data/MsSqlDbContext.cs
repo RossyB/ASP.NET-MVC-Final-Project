@@ -8,7 +8,7 @@ using System.Data.Entity.Validation;
 
 namespace BookStore.Data
 {
-    public class MsSqlDbContext : IdentityDbContext<User>
+    public class MsSqlDbContext : IdentityDbContext<User>, IMsSqlDbContext
     {
         public MsSqlDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

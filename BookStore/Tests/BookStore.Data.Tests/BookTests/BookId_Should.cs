@@ -4,7 +4,7 @@ using BookStore.Data.Model;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace BookStore.Data.Tests.BookTests
+namespace BookStore.Data.Tests.Models.BookTests
 {
     [TestFixture]
     public class BookId_Should

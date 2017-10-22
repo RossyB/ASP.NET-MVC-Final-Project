@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using BookStore.Data.Model;
 
-namespace BookStore.Data.Tests.BookTests
+namespace BookStore.Data.Tests.Models.BookTests
 {
     [TestFixture]
     public class BookCategory_Should

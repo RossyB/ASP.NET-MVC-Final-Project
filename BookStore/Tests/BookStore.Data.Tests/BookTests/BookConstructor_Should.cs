@@ -3,7 +3,7 @@ using NUnit.Framework;
 using BookStore.Data.Model;
 using System.Collections.Generic;
 
-namespace BookStore.Data.Tests.BookTests
+namespace BookStore.Data.Models.Tests.BookTests
 {
     [TestFixture]
     public class BookConstructor_Should

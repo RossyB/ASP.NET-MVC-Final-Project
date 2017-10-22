@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using BookStore.Data.Model;
 
-namespace BookStore.Data.Tests.CategoryTests
+namespace BookStore.Data.Models.Tests.CategoryTests
 {
     public class CommentConstructor_Should
     {

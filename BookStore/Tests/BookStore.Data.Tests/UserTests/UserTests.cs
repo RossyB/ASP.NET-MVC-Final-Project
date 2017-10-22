@@ -4,7 +4,7 @@ using BookStore.Data.Model;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BookStore.Data.Tests.UserTests
+namespace BookStore.Data.Models.Tests.UserTests
 {
     public class UserTests
     {

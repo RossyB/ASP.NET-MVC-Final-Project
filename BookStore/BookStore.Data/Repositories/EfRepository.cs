@@ -4,24 +4,30 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 
 using BookStore.Data.Model.Contracts;
+using Bytes2you.Validation;
 
 namespace BookStore.Data.Repositories
 {
     public class EfRepository<T> :  IEfRepository<T> 
         where T : class, IDeletable
     {
-        private readonly MsSqlDbContext context;
-
         public EfRepository(MsSqlDbContext context)
         {
-            this.context = context;
+            Guard.WhenArgument(context, nameof(IMsSqlDbContext)).IsNull().Throw();
+ 
+            this.Context = context;
+            this.DbSet = this.Context.Set<T>();
         }
+
+        public IDbSet<T> DbSet { get; set; }
+
+        public MsSqlDbContext Context { get; set; }
 
         public IQueryable<T> All
         {
             get
             {
-                return this.context.Set<T>().Where(x => !x.IsDeleted);
+                return this.Context.Set<T>().Where(x => !x.IsDeleted);
             }
         }
 
@@ -29,19 +35,18 @@ namespace BookStore.Data.Repositories
         {
             get
             {
-                return this.context.Set<T>();
+                return this.Context.Set<T>();
             }
         }
 
-
         public T GetById(Guid id)
         {
-            return this.context.Set<T>().Find(id);
+            return this.Context.Set<T>().Find(id);
         }
 
         public void Add(T entity)
         {
-            DbEntityEntry entry = this.context.Entry(entity);
+            DbEntityEntry entry = this.Context.Entry(entity);
 
             if (entry.State != EntityState.Detached)
             {
@@ -49,7 +54,7 @@ namespace BookStore.Data.Repositories
             }
             else
             {
-                this.context.Set<T>().Add(entity);
+                this.Context.Set<T>().Add(entity);
             }
         }
 
@@ -58,16 +63,16 @@ namespace BookStore.Data.Repositories
             entity.IsDeleted = true;
             entity.DeletedOn = DateTime.Now;
 
-            var entry = this.context.Entry(entity);
+            var entry = this.Context.Entry(entity);
             entry.State = EntityState.Modified;
         }
 
         public void Update(T entity)
         {
-            DbEntityEntry entry = this.context.Entry(entity);
+            DbEntityEntry entry = this.Context.Entry(entity);
             if (entry.State == EntityState.Detached)
             {
-                this.context.Set<T>().Attach(entity);
+                this.Context.Set<T>().Attach(entity);
             }
 
             entry.State = EntityState.Modified;

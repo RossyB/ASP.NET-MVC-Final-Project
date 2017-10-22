@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using BookStore.Data.Model;
 
-namespace BookStore.Data.Tests.BookTests
+namespace BookStore.Data.Models.Tests.BookTests
 {
     [TestFixture]
     public class BookIsDeleted_Should
