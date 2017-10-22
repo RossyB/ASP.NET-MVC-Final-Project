@@ -19,14 +19,14 @@ namespace BookStore.Services
 
         public IQueryable<Category> GetAll()
         {
-            return this.categories.All
+            return this.categories.All()
                 .OrderBy(c => c.Name);
         }
 
         public IQueryable<Category> GetById(Guid? categoryId)
         {
             return this.categories
-                .All
+                .All()
                 .Where(b => b.Id == categoryId);
 
         }
@@ -34,7 +34,7 @@ namespace BookStore.Services
         public Category GetCategoryByName(string name)
         {
             return this.categories
-                .All
+                .All()
                 .Where(c => c.Name == name)
                 .FirstOrDefault();
         }

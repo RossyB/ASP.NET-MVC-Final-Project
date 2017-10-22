@@ -29,14 +29,14 @@ namespace BookStore.Services
 
         public IQueryable<Book> GetAll()
         {
-            return this.books.All
+            return this.books.All()
                 .OrderBy(c => c.Title);
         }
 
         public IQueryable<Book> GetById(Guid bookId)
         {
             return this.books
-                .All
+                .All()
                 .Where(b => b.Id == bookId);
 
         }
@@ -44,7 +44,7 @@ namespace BookStore.Services
         public Guid AddBook(string title, string author, string description, decimal price, string bookImageUrl, Guid categoryId, string userId)
         {
             var currentUser = this.users
-                .All
+                .All()
                 .FirstOrDefault(u => u.Id == userId);
 
             if (currentUser == null)

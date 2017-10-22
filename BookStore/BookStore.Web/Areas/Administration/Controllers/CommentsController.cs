@@ -31,7 +31,7 @@ namespace BookStore.Web.Areas.Administration.Controllers
         // GET: Administration/Comments
         public ActionResult Index()
         {
-            var commentsList = comments.All.ToList();
+            var commentsList = comments.All().ToList();
             return View(commentsList);
         }
 
@@ -42,7 +42,7 @@ namespace BookStore.Web.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comment comment = comments.All.Where(c=> c.Id == id).FirstOrDefault();
+            Comment comment = comments.All().Where(c=> c.Id == id).FirstOrDefault();
             if (comment == null)
             {
                 return HttpNotFound();
@@ -57,13 +57,13 @@ namespace BookStore.Web.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comment comment = comments.All.Where(c => c.Id == id).FirstOrDefault();
+            Comment comment = comments.All().Where(c => c.Id == id).FirstOrDefault();
             if (comment == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.BookId = new SelectList(books.All, "Id", "Title", comment.BookId);
-            ViewBag.UserId = new SelectList(users.All, "Id", "FirstName", comment.UserId);
+            ViewBag.BookId = new SelectList(books.All(), "Id", "Title", comment.BookId);
+            ViewBag.UserId = new SelectList(users.All(), "Id", "FirstName", comment.UserId);
             return View(comment);
         }
 
@@ -80,8 +80,8 @@ namespace BookStore.Web.Areas.Administration.Controllers
                 context.Commit();
                 return RedirectToAction("Index");
             }
-            ViewBag.BookId = new SelectList(books.All, "Id", "Title", comment.BookId);
-            ViewBag.UserId = new SelectList(users.All, "Id", "FirstName", comment.UserId);
+            ViewBag.BookId = new SelectList(books.All(), "Id", "Title", comment.BookId);
+            ViewBag.UserId = new SelectList(users.All(), "Id", "FirstName", comment.UserId);
             return View(comment);
         }
 
@@ -92,7 +92,7 @@ namespace BookStore.Web.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comment comment = comments.All.Where(c => c.Id == id).FirstOrDefault();
+            Comment comment = comments.All().Where(c => c.Id == id).FirstOrDefault();
             if (comment == null)
             {
                 return HttpNotFound();
@@ -105,7 +105,7 @@ namespace BookStore.Web.Areas.Administration.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Comment comment = comments.All.Where(c => c.Id == id).FirstOrDefault();
+            Comment comment = comments.All().Where(c => c.Id == id).FirstOrDefault();
             comments.Delete(comment);
             context.Commit();
             return RedirectToAction("Index");

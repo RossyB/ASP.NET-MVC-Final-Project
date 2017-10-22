@@ -24,7 +24,7 @@ namespace BookStore.Services.Tests.CategoryServiceTests
             categoryService.GetAll();
 
             // Assert
-            repositoryMock.Verify(rep => rep.All, Times.Once);
+            repositoryMock.Verify(rep => rep.All(), Times.Once);
         }
 
         [Test]
@@ -34,7 +34,7 @@ namespace BookStore.Services.Tests.CategoryServiceTests
             var repositoryMock = new Mock<IEfRepository<Category>>();
 
             // Assert
-            repositoryMock.Verify(rep => rep.All, Times.Never);
+            repositoryMock.Verify(rep => rep.All(), Times.Never);
         }
 
         [Test]
@@ -47,7 +47,7 @@ namespace BookStore.Services.Tests.CategoryServiceTests
 
             // Act
             IEnumerable<Category> expectedCategoriesResult = new List<Category>();
-            repositoryMock.Setup(rep => rep.All).Returns(() => expectedCategoriesResult.AsQueryable());
+            repositoryMock.Setup(rep => rep.All()).Returns(() => expectedCategoriesResult.AsQueryable());
 
             // Assert
             Assert.AreEqual(categoryService.GetAll(), expectedCategoriesResult);

@@ -23,25 +23,14 @@ namespace BookStore.Data.Repositories
 
         public MsSqlDbContext Context { get; set; }
 
-        public IQueryable<T> All
+        public IQueryable<T> All()
         {
-            get
-            {
-                return this.Context.Set<T>().Where(x => !x.IsDeleted);
-            }
-        }
-
-        public IQueryable<T> AllAndDeleted
-        {
-            get
-            {
-                return this.Context.Set<T>();
-            }
+                return this.DbSet.Where(x => !x.IsDeleted).AsQueryable();
         }
 
         public T GetById(Guid id)
         {
-            return this.Context.Set<T>().Find(id);
+            return this.DbSet.Find(id);
         }
 
         public void Add(T entity)
@@ -54,7 +43,7 @@ namespace BookStore.Data.Repositories
             }
             else
             {
-                this.Context.Set<T>().Add(entity);
+                this.DbSet.Add(entity);
             }
         }
 
@@ -72,7 +61,7 @@ namespace BookStore.Data.Repositories
             DbEntityEntry entry = this.Context.Entry(entity);
             if (entry.State == EntityState.Detached)
             {
-                this.Context.Set<T>().Attach(entity);
+                this.DbSet.Attach(entity);
             }
 
             entry.State = EntityState.Modified;

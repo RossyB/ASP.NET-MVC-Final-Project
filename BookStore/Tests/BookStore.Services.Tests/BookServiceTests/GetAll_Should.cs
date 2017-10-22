@@ -26,7 +26,7 @@ namespace BookStore.Services.Tests.BookServiceTests
             bookService.GetAll();
 
             // Assert
-            bookRepositoryMock.Verify(rep => rep.All, Times.Once);
+            bookRepositoryMock.Verify(rep => rep.All(), Times.Once);
         }
 
         [Test]
@@ -39,7 +39,7 @@ namespace BookStore.Services.Tests.BookServiceTests
 
 
             // Assert
-            bookRepositoryMock.Verify(rep => rep.All, Times.Never);
+            bookRepositoryMock.Verify(rep => rep.All(), Times.Never);
         }
 
         [Test]
@@ -54,7 +54,7 @@ namespace BookStore.Services.Tests.BookServiceTests
 
             // Act
             var expectedbookResult = new List<Book>() { new Book(), new Book() };
-            bookRepositoryMock.Setup(rep => rep.All).Returns(() => expectedbookResult.AsQueryable());
+            bookRepositoryMock.Setup(rep => rep.All()).Returns(() => expectedbookResult.AsQueryable());
 
             // Assert
             Assert.AreEqual(bookService.GetAll(), expectedbookResult);

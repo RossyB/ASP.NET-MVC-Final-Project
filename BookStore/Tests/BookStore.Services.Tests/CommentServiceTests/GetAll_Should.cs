@@ -26,7 +26,7 @@ namespace BookStore.Services.Tests.CommentServiceTests
             commentService.GetAll();
 
             // Assert
-            commentRepositoryMock.Verify(rep => rep.All, Times.Once);
+            commentRepositoryMock.Verify(rep => rep.All(), Times.Once);
         }
 
         [Test]
@@ -36,7 +36,7 @@ namespace BookStore.Services.Tests.CommentServiceTests
             var commentRepositoryMock = new Mock<IEfRepository<Category>>();
 
             // Assert
-            commentRepositoryMock.Verify(rep => rep.All, Times.Never);
+            commentRepositoryMock.Verify(rep => rep.All(), Times.Never);
         }
 
         [Test]
@@ -51,7 +51,7 @@ namespace BookStore.Services.Tests.CommentServiceTests
 
             // Act
             IEnumerable<Comment> expectedCategoriesResult = new List<Comment>();
-            commentRepositoryMock.Setup(rep => rep.All).Returns(() => expectedCategoriesResult.AsQueryable());
+            commentRepositoryMock.Setup(rep => rep.All()).Returns(() => expectedCategoriesResult.AsQueryable());
 
             // Assert
             Assert.AreEqual(commentService.GetAll(), expectedCategoriesResult);

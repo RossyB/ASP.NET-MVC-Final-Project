@@ -30,7 +30,7 @@ namespace BookStore.Web.Areas.Administration.Controllers
         // GET: Administration/Categories
         public ActionResult Index()
         {
-            var categoriesList = categories.All.OrderBy(n => n.Name).ToList();
+            var categoriesList = categories.All().OrderBy(n => n.Name).ToList();
 
             return View(categoriesList);
         }
@@ -42,7 +42,7 @@ namespace BookStore.Web.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = categories.All.Where(c => c.Id == id).FirstOrDefault();
+            Category category = categories.All().Where(c => c.Id == id).FirstOrDefault();
             if (category == null)
             {
                 return HttpNotFound();
@@ -82,7 +82,7 @@ namespace BookStore.Web.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = categories.All.Where(c => c.Id == id).FirstOrDefault();
+            Category category = categories.All().Where(c => c.Id == id).FirstOrDefault();
             if (category == null)
             {
                 return HttpNotFound();
@@ -113,7 +113,7 @@ namespace BookStore.Web.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = categories.All.Where(c => c.Id == id).FirstOrDefault();
+            Category category = categories.All().Where(c => c.Id == id).FirstOrDefault();
             if (category == null)
             {
                 return HttpNotFound();
@@ -126,7 +126,7 @@ namespace BookStore.Web.Areas.Administration.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Category category = categories.All.Where(c => c.Id == id).FirstOrDefault();
+            Category category = categories.All().Where(c => c.Id == id).FirstOrDefault();
             categories.Delete(category);
             context.Commit();
             return RedirectToAction("Index");

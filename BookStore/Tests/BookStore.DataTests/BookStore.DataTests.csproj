@@ -77,6 +77,11 @@
     <Compile Include="BookStoreDbContext.Tests\Constructor_Should.cs" />
     <Compile Include="BookStoreDbContext.Tests\Create_Should.cs" />
     <Compile Include="EfRepoBookStoreData.Tests\Constructor_Should.cs" />
+    <Compile Include="EfRepoBookStoreData.Tests\All_Should.cs" />
+    <Compile Include="EfRepoBookStoreData.Tests\GetById_Should.cs" />
+    <Compile Include="EfRepoBookStoreData.Tests\Add_Should.cs" />
+    <Compile Include="EfRepoBookStoreData.Tests\Delete_Should.cs" />
+    <Compile Include="EfRepoBookStoreData.Tests\Update_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

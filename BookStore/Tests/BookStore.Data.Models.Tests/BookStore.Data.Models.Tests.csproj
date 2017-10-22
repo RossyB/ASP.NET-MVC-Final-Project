@@ -60,7 +60,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BookTests\BookRange_Should.cs" />
+    <Compile Include="BookTests\BookRating_Should.cs" />
     <Compile Include="BookTests\BookPrice_Should.cs" />
     <Compile Include="BookTests\BookImageUrl_Should.cs" />
     <Compile Include="BookTests\BookConstructor_Should.cs" />

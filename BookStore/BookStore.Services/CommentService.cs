@@ -30,14 +30,14 @@ namespace BookStore.Services
 
         public IQueryable<Comment> GetAll()
         {
-            return this.comments.All
+            return this.comments.All()
                 .OrderBy(c => c.CreatedOn);
         }
 
         public IQueryable<Comment> GetById(Guid commentId)
         {
             return this.comments
-                .All
+                .All()
                 .Where(c => c.Id == commentId);
 
         }
@@ -45,14 +45,14 @@ namespace BookStore.Services
         public Comment GetCommentByUserId(Guid userId)
         {
             return this.comments
-                .All
+                .All()
                 .Where(c => c.UserId == userId.ToString())
                 .FirstOrDefault();
         }
 
         public Comment AddComment(string content, string userId, Guid bookId)
         {
-            var user = users.All.Where(u => u.Id == userId).FirstOrDefault();
+            var user = users.All().Where(u => u.Id == userId).FirstOrDefault();
 
             var newComment = new Comment()
             {
