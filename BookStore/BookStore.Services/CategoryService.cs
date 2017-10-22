@@ -1,11 +1,8 @@
-﻿using BookStore.Data.Model;
-using BookStore.Data.Repositories;
-using Bytes2you.Validation;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Bytes2you.Validation;
+using BookStore.Data.Model;
+using BookStore.Data.Repositories;
 
 namespace BookStore.Services
 {

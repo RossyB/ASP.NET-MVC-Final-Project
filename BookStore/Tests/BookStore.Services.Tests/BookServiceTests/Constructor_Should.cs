@@ -60,5 +60,7 @@ namespace BookStore.Services.Tests.BookServiceTests
             Assert.Throws<ArgumentNullException>(
                 () => new BookService(bookRepositoryMock.Object, userRepositoryMock.Object, null));
         }
+
+
     }
 }

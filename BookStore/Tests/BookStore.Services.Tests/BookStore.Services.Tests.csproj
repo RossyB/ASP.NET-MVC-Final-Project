@@ -78,6 +78,7 @@
     <Compile Include="CategoryServiceTests\Constructor_Should.cs" />
     <Compile Include="CategoryServiceTests\GetAll_Should.cs" />
     <Compile Include="CategoryServiceTests\GetById_Should.cs" />
+    <Compile Include="CategoryServiceTests\Name_Should.cs" />
     <Compile Include="CommentServiceTests\Constructor_Should.cs" />
     <Compile Include="CommentServiceTests\GetAll_Should.cs" />
     <Compile Include="CommentServiceTests\GetById_Should.cs" />
