@@ -84,6 +84,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\BookStore.Data.Model\BookStore.Data.Model.csproj">
+      <Project>{a25db66b-6a03-4364-b6e6-7a95bdf26c6e}</Project>
+      <Name>BookStore.Data.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\BookStore.Data\BookStore.Data.csproj">
       <Project>{fed59dfa-e453-45ac-bb08-11f97a5815c1}</Project>
       <Name>BookStore.Data</Name>

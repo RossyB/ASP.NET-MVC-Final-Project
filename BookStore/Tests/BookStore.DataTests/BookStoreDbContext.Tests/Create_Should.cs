@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using BookStore.Data;
 
-namespace BookStore.Data.Tests.BookStoreDbContext.Tests
+namespace BookStore.DataTests.BookStoreDbContext.Tests
 {
     [TestFixture]
     public class Create_Should
