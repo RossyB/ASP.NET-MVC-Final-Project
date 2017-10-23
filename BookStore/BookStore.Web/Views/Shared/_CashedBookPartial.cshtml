@@ -1,0 +1,23 @@
+﻿@using BookStore.Web.Models.Home
+@model ICollection<HomeBookViewModel>
+
+<br />
+<h2 class="text-center">Latest books</h2>
+<hr />
+<div class="row books-container">
+    @foreach (var book in Model)
+    {
+        <div class="col-md-3">
+            <div class="home-book-container text-center">
+                <div class="book-category">@book.CategoryName</div>
+                <img src="@(book.BookImageUrl)" class="home-book-image" />
+                <h4 class="book-title">@book.Title</h4>
+                <p>by <span>@book.Author</span></p>
+                <p class="book-price">@book.Price  lv.</p>
+                <p>added on @Html.DisplayFor(x => book.CreatedOn)</p>
+                <p><em>by @book.OwnerUsername</em></p>
+
+                <p><a href="/books/bookdetails/@book.Id.ToString()" class="btn btn-sm btn-success" role="button">Read more...</a></p>
+            </div>
+        </div>
+    }

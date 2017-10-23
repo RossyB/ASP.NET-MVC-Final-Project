@@ -22,14 +22,7 @@ namespace BookStore.Web.Controllers
 
         public ActionResult Index()
         {
-            var books = this.bookService
-                .GetAll()
-                .ProjectTo<HomeBookViewModel>()
-                .OrderByDescending(b => b.CreatedOn)
-                .Take(8)
-                .ToList();
-
-            return View(books);
+            return View();
         }
 
         public ActionResult Books()
@@ -59,6 +52,20 @@ namespace BookStore.Web.Controllers
         public ActionResult Error()
         {
             return View();
+        }
+
+        [ChildActionOnly]
+        [OutputCache(Duration = 10)]
+        public ActionResult CashedBooks()
+        {
+            var books = this.bookService
+                            .GetAll()
+                            .ProjectTo<HomeBookViewModel>()
+                            .OrderByDescending(b => b.CreatedOn)
+                            .Take(8)
+                            .ToList();
+
+            return this.PartialView("_CashedBookPartial", books);
         }
     }
 }

@@ -33,7 +33,6 @@ namespace BookStore.Web.Controllers
                 .MapTo<BooksViewModel>()
                 .OrderBy(b => b.Title)
                 .ToList();
-
             return View(books);
         }
 

@@ -43,15 +43,6 @@ namespace BookStore.Services
 
         public Guid AddBook(string title, string author, string description, decimal? price, string bookImageUrl, Guid? categoryId, string userId)
         {
-            var currentUser = this.users
-                .All()
-                .FirstOrDefault(u => u.Id == userId);
-
-            if (currentUser == null)
-            {
-                throw new ArgumentException("Current user cannot be found!");
-            }
-
             var newBook = new Book()
             {
                 Title = title,

@@ -1,11 +1,10 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Moq;
 using BookStore.Data.Repositories;
 using BookStore.Data.Model;
 using BookStore.Data.Repositories.SaveContext;
 using BookStore.Data;
-using System.Linq;
+using System;
 
 namespace BookStore.Services.Tests.BookServiceTests
 {
@@ -15,32 +14,52 @@ namespace BookStore.Services.Tests.BookServiceTests
         [Test]
         public void ThrowArgumentNullExceptionWithProperMessageWhenBookIsNull()
         {
+            //Arange
             var bookRepositoryMock = new Mock<IEfRepository<Book>>();
             var userRepositoryMock = new Mock<IEfRepository<User>>();
             var validDbContext = new Mock<MsSqlDbContext>();
-            var dbContextSaveChanges = new SaveContext(validDbContext.Object);
+            var mockedSaveChanges = new Mock<SaveContext>(validDbContext.Object);
 
-            var booksService = new BookService(bookRepositoryMock.Object, userRepositoryMock.Object, dbContextSaveChanges);
+            //Act
+            var bookService = new BookService(bookRepositoryMock.Object, userRepositoryMock.Object, mockedSaveChanges.Object);
 
-            Assert.That(() => booksService.AddBook(null, null, null, null, null, null, null),
-                            Throws.ArgumentException);
+            //Assert
+            Assert.That(() => bookService.AddBook(null, null, null, null, null, null, null),
+                            Throws.InvalidOperationException);
         }
 
         //[Test]
-        //public void AddAdvert_Should_CallSaveChangesOnce_IfAdvertIsValid()
+        //public void CallBooksRepositoryAddMethodWhenBookParameterIsValid()
         //{
             // Arrange
         //    var userId = Guid.NewGuid();
         //    var testGuid = Guid.NewGuid();
-        //    var UserDbModel = new User() { Id = userId.ToString(), UserName = "Ivancho"};
         //    var bookRepositoryMock = new Mock<IEfRepository<Book>>();
         //    var userRepositoryMock = new Mock<IEfRepository<User>>();
         //    var validDbContext = new Mock<MsSqlDbContext>();
         //    var mockedSaveChanges = new Mock<SaveContext>(validDbContext.Object);
-           
+        //    var mockedBook = new Mock<Book>();
+
 
             // Act
-        //    userRepositoryMock.SetReturnsDefault(UserDbModel);
+        //    var booksService = new BookService(bookRepositoryMock.Object, userRepositoryMock.Object, mockedSaveChanges.Object);
+        //    booksService.AddBook("Title", "Author", "Description", (Decimal)2.30, "asdfghjkl", testGuid, userId.ToString());
+
+        //    bookRepositoryMock.Verify(x => x.Add(mockedBook.Object), Times.Once());
+        //}
+
+        //[Test]
+        //public void CallSaveChangesOnce_IfAdvertIsValid()
+        //{
+            // Arrange
+        //    var userId = Guid.NewGuid();
+        //    var testGuid = Guid.NewGuid();
+        //    var bookRepositoryMock = new Mock<IEfRepository<Book>>();
+        //    var userRepositoryMock = new Mock<IEfRepository<User>>();
+        //    var validDbContext = new Mock<MsSqlDbContext>();
+        //    var mockedSaveChanges = new Mock<SaveContext>(validDbContext.Object);
+          
+            // Act
         //    var booksService = new BookService(bookRepositoryMock.Object, userRepositoryMock.Object, mockedSaveChanges.Object);
         //    booksService.AddBook("Title", "Author", "Description", (Decimal)2.30, "asdfghjkl", testGuid, userId.ToString());
 
