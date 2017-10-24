@@ -9,9 +9,9 @@ namespace BookStore.Data.Migrations
 {
     public sealed class Configuration : DbMigrationsConfiguration<MsSqlDbContext>
     {
-        const string AdminEmail = "admin@bookstore.com";
-        const string AdminUserName = "Administrator";
-        const string AdminPassword = "123456";
+        //const string AdminEmail = "admin@bookstore.com";
+        //const string AdminUserName = "Administrator";
+        //const string AdminPassword = "123456";
 
         public Configuration()
         {

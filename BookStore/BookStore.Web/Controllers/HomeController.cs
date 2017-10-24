@@ -8,6 +8,7 @@ using BookStore.Web.Infrastructure;
 using BookStore.Web.Models.Home;
 using AutoMapper.QueryableExtensions;
 using BookStore.Web.Models.Books;
+using Bytes2you.Validation;
 
 namespace BookStore.Web.Controllers
 {
@@ -17,6 +18,8 @@ namespace BookStore.Web.Controllers
 
         public HomeController(IBookService bookService)
         {
+            Guard.WhenArgument(bookService, "bookService").IsNull().Throw();
+
             this.bookService = bookService;
         }
 

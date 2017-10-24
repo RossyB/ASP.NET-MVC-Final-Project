@@ -2,6 +2,7 @@
 using BookStore.Data.Model;
 using BookStore.Services;
 using BookStore.Web.Models.Comments;
+using Bytes2you.Validation;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,9 @@ namespace BookStore.Web.Controllers
 
         public CommentsController(ICommentService commentService, IBookService bookService)
         {
+            Guard.WhenArgument(bookService, "bookService").IsNull().Throw();
+            Guard.WhenArgument(commentService, "commentService").IsNull().Throw();
+
             this.commentService = commentService;
             this.bookService = bookService;
         }
