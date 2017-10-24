@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using BookStore.Data;
 using BookStore.Data.Model;
 using BookStore.Data.Repositories;
 using BookStore.Data.Repositories.SaveContext;
 
 namespace BookStore.Web.Areas.Administration.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class CategoriesController : Controller
     {
         private readonly IEfRepository<Category> categories;
@@ -28,6 +25,7 @@ namespace BookStore.Web.Areas.Administration.Controllers
             this.context = context;
         }
         // GET: Administration/Categories
+        
         public ActionResult Index()
         {
             var categoriesList = categories.All().OrderBy(n => n.Name).ToList();
