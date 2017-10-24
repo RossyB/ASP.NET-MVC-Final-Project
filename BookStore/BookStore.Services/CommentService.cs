@@ -1,12 +1,10 @@
-﻿using BookStore.Data.Model;
+﻿using System;
+using System.Linq;
+using BookStore.Data.Model;
 using BookStore.Data.Repositories;
 using BookStore.Data.Repositories.SaveContext;
 using Bytes2you.Validation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BookStore.Services
 {

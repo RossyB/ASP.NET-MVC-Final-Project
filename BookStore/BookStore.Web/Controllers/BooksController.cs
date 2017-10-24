@@ -1,13 +1,13 @@
-﻿using BookStore.Services;
+﻿using AutoMapper;
+using BookStore.Services;
 using BookStore.Web.Infrastructure;
 using BookStore.Web.Models.Books;
 using BookStore.Web.Models.Comments;
-using BookStore.Web.Models.Home;
+using Bytes2you.Validation;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BookStore.Web.Controllers
@@ -20,6 +20,10 @@ namespace BookStore.Web.Controllers
 
         public BooksController(IBookService bookService, ICategoryService categoryService, ICommentService commentService)
         {
+            Guard.WhenArgument(bookService, "bookService").IsNull().Throw();
+            Guard.WhenArgument(categoryService, "categoryService").IsNull().Throw();
+            Guard.WhenArgument(commentService, "commentService").IsNull().Throw();
+
             this.bookService = bookService;
             this.categoryService = categoryService;
             this.commentService = commentService;

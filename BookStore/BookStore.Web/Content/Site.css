@@ -101,3 +101,6 @@ textarea {
 .book-detail-container{
     padding-top: 50px;
 }
+.book-detali-img{
+    max-width: 350px;
+}
